@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [products] = useContext(productContext);
-
-  // Extract unique categories from products
   const categories = Array.from(new Set(products.map(product => product.category)));
 
   function getRandomRGBA() {
@@ -24,6 +22,12 @@ const Nav = () => {
       <hr />
       <h1 className="mt-3 font-bold ml-3">Category Filter</h1>
       <ul className="mt-2 ml-3">
+       <div className="flex">
+       <div className="flex items-center justify-center gap-2">
+        <div style={{backgroundColor:getRandomRGBA()}} className="w-[1vw] h-[1vw] rounded-full"></div>
+       <Link to={'/'}>All Category</Link>
+       </div>
+       </div>
         {categories.map((category, index) => (
           <Link to={`/?categories=${category}`}>          
                <div className="flex ">
